@@ -118,7 +118,8 @@
             <main className="relative z-10 flex flex-col justify-center pt-16 lg:pt-24 pb-16 px-6 lg:px-16">
               <div className="w-full max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
                 
-                <div className="lg:col-span-6 xl:col-span-7 flex flex-col order-2 lg:order-1">
+                {/* Расширено до lg:col-span-7 для баланса */}
+                <div className="lg:col-span-7 flex flex-col order-2 lg:order-1">
                   
                   <div className="inline-flex items-center flex-wrap gap-2 sm:gap-3 mb-8 animate-fade-in-up opacity-0">
                     <span className="flex h-1.5 w-1.5 relative mr-1">
@@ -130,15 +131,19 @@
                     </span>
                   </div>
 
-                  <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-[3.25rem] font-extrabold leading-[1.2] tracking-tight text-[#01191d] mb-6 animate-fade-in-up delay-100 opacity-0 max-w-[45rem]">
-                    Привлекаем платёжеспособных клиентов<br className="hidden sm:block" /> для <span className="text-[#0b8c8e]">Health & Beauty-проектов</span>
+                  {/* Сбалансированный заголовок с ручными переносами для 3 строк */}
+                  <h1 className="text-[2.25rem] sm:text-5xl lg:text-[2.5rem] xl:text-[3rem] font-extrabold leading-[1.2] tracking-tight text-[#01191d] mb-5 animate-fade-in-up delay-100 opacity-0">
+                    Привлекаем<br className="hidden lg:block" /> 
+                    платёжеспособных клиентов<br className="hidden lg:block" /> 
+                    для <span className="text-[#0b8c8e]">Health & Beauty-проектов</span>
                   </h1>
 
-                  <h2 className="text-base sm:text-lg text-[#01191d]/70 font-normal leading-relaxed max-w-2xl mb-8 animate-fade-in-up delay-200 opacity-0">
+                  {/* Новый подзаголовок */}
+                  <h2 className="text-base sm:text-lg text-[#01191d]/70 font-normal leading-relaxed max-w-2xl mb-10 animate-fade-in-up delay-200 opacity-0">
                     Performance-маркетинг для клиник, MedTech, Wellness и Beauty-брендов с высоким чеком. Усиливаем доверие, объясняем ценность услуги и приводим клиентов, готовых платить за качество и результат.
                   </h2>
 
-                  <ul className="flex flex-col gap-5 mb-10 animate-fade-in-up delay-300 opacity-0">
+                  <ul className="flex flex-col gap-5 mb-12 animate-fade-in-up delay-300 opacity-0">
                     <li className="flex items-start gap-4">
                       <div className="w-1.5 h-1.5 bg-[#0b8c8e] rounded-full mt-2.5 shrink-0"></div>
                       <span className="text-[#01191d]/80 font-medium text-base sm:text-lg leading-snug">
@@ -175,7 +180,8 @@
 
                 </div>
 
-                <div className="lg:col-span-6 xl:col-span-5 relative order-1 lg:order-2 animate-fade-in-up delay-200 opacity-0">
+                {/* Уменьшено до lg:col-span-5 для баланса */}
+                <div className="lg:col-span-5 relative order-1 lg:order-2 animate-fade-in-up delay-200 opacity-0">
                   <div className="relative w-full max-w-md mx-auto lg:max-w-none aspect-[4/5] lg:h-[700px] flex items-center justify-center">
                     <div className="absolute inset-0 z-0 animate-breathe opacity-[0.15] mix-blend-multiply pointer-events-none scale-110">
                       <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
@@ -217,7 +223,7 @@
                     <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#0b8c8e]">Барьеры роста</span>
                     <span className="w-8 h-[1px] bg-[#0b8c8e]"></span>
                   </div>
-                  <h2 className="text-[2rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.1] tracking-tight text-[#01191d] mb-6 [text-wrap:balance]">
+                  <h2 className="text-[2rem] sm:text-3xl lg:text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-[#01191d] mb-6 [text-wrap:balance]">
                     Где теряются деньги в рекламе клиник, эстетической медицины и wellness-проектов
                   </h2>
                   <p className="text-[#01191d]/70 text-base sm:text-lg leading-relaxed font-medium max-w-3xl">
@@ -316,7 +322,7 @@
                     <span className="w-8 h-[1px] bg-[#0b8c8e]"></span>
                     <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#0b8c8e]">Подход к работе</span>
                   </div>
-                  <h2 className="text-[2rem] sm:text-4xl lg:text-[3rem] font-extrabold leading-[1.1] tracking-tight text-white mb-6 [text-wrap:balance]">
+                  <h2 className="text-[2rem] sm:text-3xl lg:text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-white mb-6 [text-wrap:balance]">
                     Рекламная стратегия AnnyWay для Health & Beauty: от доверия к бренду до записи и оплаты
                   </h2>
                   <p className="text-white/70 text-base sm:text-lg leading-relaxed font-medium max-w-3xl">
