@@ -1,456 +1,483 @@
-import React, { useState } from 'react';
-import { 
-  Menu, 
-  ArrowRight, 
-  Info, 
-  Camera, 
-  X,
-  Check
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnnyWay — Health & Beauty Marketing</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- React & ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
 
-export default function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  <script type="text/babel">
+    const { useState, useEffect } = React;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-  };
+    function App() {
+      const [isModalOpen, setIsModalOpen] = useState(false);
+      const [isSubmitted, setIsSubmitted] = useState(false);
 
-  return (
-    <>
-      {/* Глобальные стили из вашего дизайна */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
-        
-        body {
-          font-family: 'Manrope', sans-serif;
-          background-color: #f2f2f2;
-          color: #01191d;
-          overflow-x: hidden;
-        }
+      // Инициализация иконок Lucide после рендера
+      useEffect(() => {
+        lucide.createIcons();
+      });
 
-        .sharp-edge {
-          border-radius: 0;
-        }
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setIsSubmitted(true);
+      };
 
-        @keyframes fadeInUp {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes breathe {
-          0%, 100% { transform: scale(1) translate(0, 0); }
-          50% { transform: scale(1.05) translate(-10px, 10px); }
-        }
-
-        .animate-fade-in-up {
-          animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .animate-breathe {
-          animation: breathe 15s ease-in-out infinite;
-        }
-
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-        .delay-400 { animation-delay: 400ms; }
-        
-        input:focus { outline: none; }
-      `}</style>
-
-      <div className="min-h-screen flex flex-col relative selection:bg-[#0b8c8e] selection:text-white bg-[#f2f2f2]">
-
-        {/* Архитектурный паттерн "А" */}
-        <div className="absolute top-[-5%] left-[-5%] text-[45vw] font-extrabold text-[#01191d]/[0.03] leading-none pointer-events-none select-none z-0">
-          A
-        </div>
-
-        {/* Шапка */}
-        <header className="w-full sticky top-0 z-40 py-5 lg:py-6 px-6 lg:px-16 flex items-center justify-between border-b border-[#01191d]/[0.05] bg-[#f2f2f2]/80 backdrop-blur-xl transition-all duration-300">
-          <a href="#" className="flex flex-col leading-none group pl-1">
-            <span className="text-2xl font-extrabold tracking-tight text-[#01191d]">AnnyWay</span>
-            <span className="text-[7.5px] sm:text-[8px] font-bold tracking-[0.15em] text-[#0b8c8e] uppercase mt-1">коммуникационное агентство</span>
-          </a>
-
-          <nav className="hidden lg:flex items-center gap-12">
-            <a href="#" className="text-[11px] uppercase tracking-widest font-bold text-[#01191d] hover:text-[#0b8c8e] transition-colors">Главная</a>
-            <a href="#" className="text-[11px] uppercase tracking-widest font-bold text-[#01191d]/60 hover:text-[#01191d] transition-colors">Экспертиза</a>
-            <a href="#" className="text-[11px] uppercase tracking-widest font-bold text-[#01191d]/60 hover:text-[#01191d] transition-colors">Кейсы</a>
-            <a href="#" className="text-[11px] uppercase tracking-widest font-bold text-[#01191d]/60 hover:text-[#01191d] transition-colors">Контакты</a>
-          </nav>
-
-          <button 
-            onClick={() => setIsModalOpen(true)}
-            className="hidden lg:flex px-6 py-3 border border-[#01191d]/20 text-[10px] uppercase tracking-[0.15em] font-bold text-[#01191d] hover:border-[#0b8c8e] hover:bg-[#0b8c8e] hover:text-white transition-colors duration-300 sharp-edge"
-          >
-            Обсудить проект
-          </button>
-
-          <button className="lg:hidden p-2 text-[#01191d] hover:text-[#0b8c8e] transition-colors">
-            <Menu className="w-6 h-6" />
-          </button>
-        </header>
-
-        {/* БЛОК 1: Hero Section */}
-        <main className="relative z-10 flex flex-col justify-center pt-16 lg:pt-24 pb-16 px-6 lg:px-16">
-          <div className="w-full max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+      return (
+        <React.Fragment>
+          {/* Глобальные стили из вашего дизайна */}
+          <style>{`
+            @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
             
-            <div className="lg:col-span-6 xl:col-span-7 flex flex-col order-2 lg:order-1">
-              
-              <div className="inline-flex items-center flex-wrap gap-2 sm:gap-3 mb-8 animate-fade-in-up opacity-0">
-                <span className="flex h-1.5 w-1.5 relative mr-1">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0b8c8e] opacity-60"></span>
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#0b8c8e]"></span>
-                </span>
-                <span className="text-[9px] sm:text-[11px] uppercase tracking-[0.2em] font-bold text-[#0b8c8e]">
-                  Рынки: США · ОАЭ · Европа
-                </span>
-              </div>
+            body {
+              font-family: 'Manrope', sans-serif;
+              background-color: #f2f2f2;
+              color: #01191d;
+              overflow-x: hidden;
+            }
 
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-[#01191d] mb-6 animate-fade-in-up delay-100 opacity-0 max-w-4xl [text-wrap:balance]">
-                Привлекаем платёжеспособных клиентов для Health & Beauty проектов <span className="text-[#0b8c8e]">с высоким средним чеком</span>
-              </h1>
+            .sharp-edge {
+              border-radius: 0;
+            }
 
-              <h2 className="text-base sm:text-lg text-[#01191d]/70 font-normal leading-relaxed max-w-2xl mb-10 animate-fade-in-up delay-200 opacity-0">
-                Выстраиваем систему маркетинга для клиник, проектов эстетической медицины, MedTech и Wellness-брендов. Создаем рекламу, которая обосновывает ценность услуги, усиливает доверие к бренду и привлекает клиентов, готовых платить за качество, экспертность и результат.
-              </h2>
+            @keyframes fadeInUp {
+              0% { opacity: 0; transform: translateY(20px); }
+              100% { opacity: 1; transform: translateY(0); }
+            }
 
-              <ul className="flex flex-col gap-5 mb-12 animate-fade-in-up delay-300 opacity-0">
-                <li className="flex items-start gap-4">
-                  <div className="w-1.5 h-1.5 bg-[#0b8c8e] rounded-full mt-2.5 shrink-0"></div>
-                  <span className="text-[#01191d]/80 font-medium text-base sm:text-lg leading-snug">
-                    <strong className="text-[#0b8c8e] font-extrabold text-xl sm:text-2xl mr-1.5">$3 млн+</strong> выручки для клиентов в Health & Beauty.
-                  </span>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-1.5 h-1.5 bg-[#0b8c8e] rounded-full mt-2.5 shrink-0"></div>
-                  <span className="text-[#01191d]/80 font-medium text-base sm:text-lg leading-snug">
-                    ROMI <strong className="text-[#0b8c8e] font-extrabold text-xl sm:text-2xl mx-1.5">229%–1687%</strong> в рекламных кампаниях AnnyWay.
-                  </span>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-1.5 h-1.5 bg-[#0b8c8e] rounded-full mt-2.5 shrink-0"></div>
-                  <span className="text-[#01191d]/80 font-medium text-base sm:text-lg leading-snug">
-                    <strong className="text-[#0b8c8e] font-extrabold text-xl sm:text-2xl mr-1.5">10 000+</strong> заявок привлечено для проектов в нише красоты и здоровья.
-                  </span>
-                </li>
-              </ul>
+            @keyframes breathe {
+              0%, 100% { transform: scale(1) translate(0, 0); }
+              50% { transform: scale(1.05) translate(-10px, 10px); }
+            }
 
-              <div className="animate-fade-in-up delay-400 opacity-0">
-                <button 
-                  onClick={() => setIsModalOpen(true)}
-                  className="w-full sm:w-auto px-10 py-5 bg-[#0b8c8e] text-white sharp-edge text-[11px] uppercase tracking-[0.2em] font-extrabold hover:bg-[#01191d] transition-colors duration-500 flex items-center justify-center gap-4 group shadow-sm"
-                >
-                  Получить консультацию
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <p className="text-[11px] font-medium text-[#01191d]/50 mt-5 flex items-start gap-2 justify-center sm:justify-start max-w-md">
-                  <Info className="w-4 h-4 text-[#0b8c8e] shrink-0 mt-0.5" />
-                  <span>После отправки формы вы получите гайд: “6 ошибок в продвижении Health & Beauty проектов, которые снижают заявки и продажи”.</span>
-                </p>
-              </div>
+            .animate-fade-in-up {
+              animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
 
+            .animate-breathe {
+              animation: breathe 15s ease-in-out infinite;
+            }
+
+            .delay-100 { animation-delay: 100ms; }
+            .delay-200 { animation-delay: 200ms; }
+            .delay-300 { animation-delay: 300ms; }
+            .delay-400 { animation-delay: 400ms; }
+            
+            input:focus { outline: none; }
+          `}</style>
+
+          <div className="min-h-screen flex flex-col relative selection:bg-[#0b8c8e] selection:text-white bg-[#f2f2f2]">
+
+            {/* Архитектурный паттерн "А" */}
+            <div className="absolute top-[-5%] left-[-5%] text-[45vw] font-extrabold text-[#01191d]/[0.03] leading-none pointer-events-none select-none z-0">
+              A
             </div>
 
-            <div className="lg:col-span-6 xl:col-span-5 relative order-1 lg:order-2 animate-fade-in-up delay-200 opacity-0">
-              <div className="relative w-full max-w-md mx-auto lg:max-w-none aspect-[4/5] lg:h-[700px] flex items-center justify-center">
-                <div className="absolute inset-0 z-0 animate-breathe opacity-[0.15] mix-blend-multiply pointer-events-none scale-110">
-                  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                       alt="AI 3D Abstract" 
-                       className="w-full h-full object-cover filter grayscale contrast-125" />
-                  <div className="absolute inset-0 bg-[#0b8c8e] mix-blend-screen opacity-80"></div>
-                </div>
+            {/* Шапка */}
+            <header className="w-full sticky top-0 z-40 py-5 lg:py-6 px-6 lg:px-16 flex items-center justify-between border-b border-[#01191d]/[0.05] bg-[#f2f2f2]/80 backdrop-blur-xl transition-all duration-300">
+              <a href="#" className="flex flex-col leading-none group pl-1">
+                <span className="text-2xl font-extrabold tracking-tight text-[#01191d]">AnnyWay</span>
+                <span className="text-[7.5px] sm:text-[8px] font-bold tracking-[0.15em] text-[#0b8c8e] uppercase mt-1">коммуникационное агентство</span>
+              </a>
 
-                <div className="relative z-10 w-[85%] h-[95%] sharp-edge overflow-hidden bg-[#f2f2f2] shadow-[0_20px_60px_-15px_rgba(1,25,29,0.1)] group">
-                  <div className="w-full h-full bg-[#e2e2e2] flex flex-col items-center justify-center transition-all duration-700 ease-out group-hover:scale-[1.03]">
-                    <Camera className="w-12 h-12 text-[#01191d]/10 mb-3" />
-                    <span className="text-[10px] uppercase tracking-widest font-bold text-[#01191d]/30">Фото Анны Жир</span>
-                  </div>
+              <nav className="hidden lg:flex items-center gap-12">
+                <a href="#" className="text-[11px] uppercase tracking-widest font-bold text-[#01191d] hover:text-[#0b8c8e] transition-colors">Главная</a>
+                <a href="#" className="text-[11px] uppercase tracking-widest font-bold text-[#01191d]/60 hover:text-[#01191d] transition-colors">Экспертиза</a>
+                <a href="#" className="text-[11px] uppercase tracking-widest font-bold text-[#01191d]/60 hover:text-[#01191d] transition-colors">Кейсы</a>
+                <a href="#" className="text-[11px] uppercase tracking-widest font-bold text-[#01191d]/60 hover:text-[#01191d] transition-colors">Контакты</a>
+              </nav>
+
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="hidden lg:flex px-6 py-3 border border-[#01191d]/20 text-[10px] uppercase tracking-[0.15em] font-bold text-[#01191d] hover:border-[#0b8c8e] hover:bg-[#0b8c8e] hover:text-white transition-colors duration-300 sharp-edge"
+              >
+                Обсудить проект
+              </button>
+
+              <button className="lg:hidden p-2 text-[#01191d] hover:text-[#0b8c8e] transition-colors">
+                <i data-lucide="menu" className="w-6 h-6"></i>
+              </button>
+            </header>
+
+            {/* БЛОК 1: Hero Section */}
+            <main className="relative z-10 flex flex-col justify-center pt-16 lg:pt-24 pb-16 px-6 lg:px-16">
+              <div className="w-full max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+                
+                <div className="lg:col-span-6 xl:col-span-7 flex flex-col order-2 lg:order-1">
                   
-                  <div className="absolute bottom-0 left-0 bg-white/95 backdrop-blur-md p-5 sm:p-6 z-20 sharp-edge border-t border-r border-[#01191d]/5 shadow-xl transition-transform duration-500 transform translate-y-2 group-hover:translate-y-0">
-                    <h4 className="text-[#01191d] font-extrabold text-sm sm:text-base leading-none mb-1.5">Анна Жир</h4>
-                    <p className="text-[#0b8c8e] text-[9px] uppercase tracking-[0.15em] font-extrabold mb-3">Основатель AnnyWay</p>
-                    <p className="text-[#01191d]/70 text-[11px] font-medium leading-snug">5 лет в маркетинге <br/>Health & Beauty</p>
+                  <div className="inline-flex items-center flex-wrap gap-2 sm:gap-3 mb-8 animate-fade-in-up opacity-0">
+                    <span className="flex h-1.5 w-1.5 relative mr-1">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0b8c8e] opacity-60"></span>
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#0b8c8e]"></span>
+                    </span>
+                    <span className="text-[9px] sm:text-[11px] uppercase tracking-[0.2em] font-bold text-[#0b8c8e]">
+                      Рынки: США · ОАЭ · Европа
+                    </span>
+                  </div>
+
+                  <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-[#01191d] mb-6 animate-fade-in-up delay-100 opacity-0 max-w-4xl [text-wrap:balance]">
+                    Привлекаем платёжеспособных клиентов для Health & Beauty проектов <span className="text-[#0b8c8e]">с высоким средним чеком</span>
+                  </h1>
+
+                  <h2 className="text-base sm:text-lg text-[#01191d]/70 font-normal leading-relaxed max-w-2xl mb-10 animate-fade-in-up delay-200 opacity-0">
+                    Выстраиваем систему маркетинга для клиник, проектов эстетической медицины, MedTech и Wellness-брендов. Создаем рекламу, которая обосновывает ценность услуги, усиливает доверие к бренду и привлекает клиентов, готовых платить за качество, экспертность и результат.
+                  </h2>
+
+                  <ul className="flex flex-col gap-5 mb-12 animate-fade-in-up delay-300 opacity-0">
+                    <li className="flex items-start gap-4">
+                      <div className="w-1.5 h-1.5 bg-[#0b8c8e] rounded-full mt-2.5 shrink-0"></div>
+                      <span className="text-[#01191d]/80 font-medium text-base sm:text-lg leading-snug">
+                        <strong className="text-[#0b8c8e] font-extrabold text-xl sm:text-2xl mr-1.5">$3 млн+</strong> выручки для клиентов в Health & Beauty.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-4">
+                      <div className="w-1.5 h-1.5 bg-[#0b8c8e] rounded-full mt-2.5 shrink-0"></div>
+                      <span className="text-[#01191d]/80 font-medium text-base sm:text-lg leading-snug">
+                        ROMI <strong className="text-[#0b8c8e] font-extrabold text-xl sm:text-2xl mx-1.5">229%–1687%</strong> в рекламных кампаниях AnnyWay.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-4">
+                      <div className="w-1.5 h-1.5 bg-[#0b8c8e] rounded-full mt-2.5 shrink-0"></div>
+                      <span className="text-[#01191d]/80 font-medium text-base sm:text-lg leading-snug">
+                        <strong className="text-[#0b8c8e] font-extrabold text-xl sm:text-2xl mr-1.5">10 000+</strong> заявок привлечено для проектов в нише красоты и здоровья.
+                      </span>
+                    </li>
+                  </ul>
+
+                  <div className="animate-fade-in-up delay-400 opacity-0">
+                    <button 
+                      onClick={() => setIsModalOpen(true)}
+                      className="w-full sm:w-auto px-10 py-5 bg-[#0b8c8e] text-white sharp-edge text-[11px] uppercase tracking-[0.2em] font-extrabold hover:bg-[#01191d] transition-colors duration-500 flex items-center justify-center gap-4 group shadow-sm"
+                    >
+                      Получить консультацию
+                      <i data-lucide="arrow-right" className="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                    <p className="text-[11px] font-medium text-[#01191d]/50 mt-5 flex items-start gap-2 justify-center sm:justify-start max-w-md">
+                      <i data-lucide="info" className="w-4 h-4 text-[#0b8c8e] shrink-0 mt-0.5"></i>
+                      <span>После отправки формы вы получите гайд: “6 ошибок в продвижении Health & Beauty проектов, которые снижают заявки и продажи”.</span>
+                    </p>
+                  </div>
+
+                </div>
+
+                <div className="lg:col-span-6 xl:col-span-5 relative order-1 lg:order-2 animate-fade-in-up delay-200 opacity-0">
+                  <div className="relative w-full max-w-md mx-auto lg:max-w-none aspect-[4/5] lg:h-[700px] flex items-center justify-center">
+                    <div className="absolute inset-0 z-0 animate-breathe opacity-[0.15] mix-blend-multiply pointer-events-none scale-110">
+                      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                           alt="AI 3D Abstract" 
+                           className="w-full h-full object-cover filter grayscale contrast-125" />
+                      <div className="absolute inset-0 bg-[#0b8c8e] mix-blend-screen opacity-80"></div>
+                    </div>
+
+                    <div className="relative z-10 w-[85%] h-[95%] sharp-edge overflow-hidden bg-[#f2f2f2] shadow-[0_20px_60px_-15px_rgba(1,25,29,0.1)] group">
+                      <div className="w-full h-full bg-[#e2e2e2] flex flex-col items-center justify-center transition-all duration-700 ease-out group-hover:scale-[1.03]">
+                        <i data-lucide="camera" className="w-12 h-12 text-[#01191d]/10 mb-3"></i>
+                        <span className="text-[10px] uppercase tracking-widest font-bold text-[#01191d]/30">Фото Анны Жир</span>
+                      </div>
+                      
+                      <div className="absolute bottom-0 left-0 bg-white/95 backdrop-blur-md p-5 sm:p-6 z-20 sharp-edge border-t border-r border-[#01191d]/5 shadow-xl transition-transform duration-500 transform translate-y-2 group-hover:translate-y-0">
+                        <h4 className="text-[#01191d] font-extrabold text-sm sm:text-base leading-none mb-1.5">Анна Жир</h4>
+                        <p className="text-[#0b8c8e] text-[9px] uppercase tracking-[0.15em] font-extrabold mb-3">Основатель AnnyWay</p>
+                        <p className="text-[#01191d]/70 text-[11px] font-medium leading-snug">5 лет в маркетинге <br/>Health & Beauty</p>
+                      </div>
+                    </div>
+
+                    <div className="absolute right-0 bottom-10 z-20 flex flex-col gap-1 text-[9px] font-mono text-[#01191d]/40 tracking-widest uppercase">
+                      <span>SYS.ON</span>
+                      <span>AI.CORE_90</span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="absolute right-0 bottom-10 z-20 flex flex-col gap-1 text-[9px] font-mono text-[#01191d]/40 tracking-widest uppercase">
-                  <span>SYS.ON</span>
-                  <span>AI.CORE_90</span>
+              </div>
+            </main>
+
+            {/* БЛОК 2: Где теряются деньги */}
+            <section className="w-full bg-white py-24 lg:py-32 px-6 lg:px-16 relative z-20">
+              <div className="max-w-[90rem] mx-auto">
+                
+                <div className="max-w-4xl mx-auto text-center mb-16 lg:mb-24 flex flex-col items-center">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="w-8 h-[1px] bg-[#0b8c8e]"></span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#0b8c8e]">Барьеры роста</span>
+                    <span className="w-8 h-[1px] bg-[#0b8c8e]"></span>
+                  </div>
+                  <h2 className="text-[2rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.1] tracking-tight text-[#01191d] mb-6 [text-wrap:balance]">
+                    Где теряются деньги в рекламе клиник, эстетической медицины и wellness-проектов
+                  </h2>
+                  <p className="text-[#01191d]/70 text-base sm:text-lg leading-relaxed font-medium max-w-3xl">
+                    В медицине, эстетике, wellness и health-проектах клиент принимает решение осторожно: сравнивает, проверяет, сомневается и ждёт убедительных причин довериться. Поэтому деньги теряются не только в рекламном кабинете, а по всей цепочке — от оффера и модерации до обработки обращений, аналитики и масштабирования.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+                  {/* Карточка 1 */}
+                  <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">01 //</span>
+                    <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
+                      Дорогой трафик на конкурентных рынках
+                    </h3>
+                    <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
+                      На рынках США, ОАЭ и Европы за внимание платёжеспособной аудитории конкурируют клиники, эксперты, wellness-бренды и крупные health-проекты. Без точного оффера, сегментации и сильных креативов стоимость обращения быстро растёт.
+                    </p>
+                  </div>
+
+                  {/* Карточка 2 */}
+                  <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">02 //</span>
+                    <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
+                      Заявки есть, но покупать готовы не все
+                    </h3>
+                    <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
+                      Реклама может приводить обращения, которые не доходят до записи: люди спрашивают цену, пропадают после первого сообщения или выбирают более дешёвый вариант. Для high-ticket услуг важно привлекать не всех подряд, а аудиторию, которая понимает ценность и готова платить.
+                    </p>
+                  </div>
+
+                  {/* Карточка 3 */}
+                  <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">03 //</span>
+                    <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
+                      Блокировки и ограничения рекламных кабинетов
+                    </h3>
+                    <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
+                      Health & Beauty — чувствительная ниша для модерации. Медицинские обещания, некорректные “до/после”, агрессивные формулировки и нарушение правил площадок могут привести к отклонениям, банам и остановке кампаний.
+                    </p>
+                  </div>
+
+                  {/* Карточка 4 */}
+                  <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">04 //</span>
+                    <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
+                      Слабая воронка после клика
+                    </h3>
+                    <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
+                      Человек переходит по рекламе, но не находит достаточно доверия: сайт не раскрывает ценность услуги, соцсети выглядят слабо, не хватает доказательств, отзывов или понятного следующего шага. Интерес появляется, но до записи не доходит.
+                    </p>
+                  </div>
+
+                  {/* Карточка 5 */}
+                  <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">05 //</span>
+                    <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
+                      Нет связи между рекламой, записями и оплатами
+                    </h3>
+                    <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
+                      В рекламном кабинете могут быть клики и заявки, но бизнес не видит, какие связки реально приводят записи, оплаты и возврат рекламных инвестиций. В итоге бюджет распределяется по ощущениям, а не по фактической эффективности.
+                    </p>
+                  </div>
+
+                  {/* Карточка 6 */}
+                  <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">06 //</span>
+                    <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
+                      Масштабирование превращается в слив бюджета
+                    </h3>
+                    <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
+                      То, что работает на тестовом бюджете, не всегда выдерживает рост вложений. Аудитории выгорают, заявки дорожают, качество обращений падает, а подрядчик без опыта больших бюджетов и локальных рынков масштабирует не результат, а расходы.
+                    </p>
+                  </div>
+
                 </div>
               </div>
-            </div>
+            </section>
 
-          </div>
-        </main>
-
-        {/* БЛОК 2: Где теряются деньги */}
-        <section className="w-full bg-white py-24 lg:py-32 px-6 lg:px-16 relative z-20">
-          <div className="max-w-[90rem] mx-auto">
-            
-            <div className="max-w-4xl mx-auto text-center mb-16 lg:mb-24 flex flex-col items-center">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="w-8 h-[1px] bg-[#0b8c8e]"></span>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#0b8c8e]">Барьеры роста</span>
-                <span className="w-8 h-[1px] bg-[#0b8c8e]"></span>
-              </div>
-              <h2 className="text-[2rem] sm:text-4xl lg:text-[2.75rem] font-extrabold leading-[1.1] tracking-tight text-[#01191d] mb-6 [text-wrap:balance]">
-                Где теряются деньги в рекламе клиник, эстетической медицины и wellness-проектов
-              </h2>
-              <p className="text-[#01191d]/70 text-base sm:text-lg leading-relaxed font-medium max-w-3xl">
-                В медицине, эстетике, wellness и health-проектах клиент принимает решение осторожно: сравнивает, проверяет, сомневается и ждёт убедительных причин довериться. Поэтому деньги теряются не только в рекламном кабинете, а по всей цепочке — от оффера и модерации до обработки обращений, аналитики и масштабирования.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-              {/* Карточка 1 */}
-              <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">01 //</span>
-                <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
-                  Дорогой трафик на конкурентных рынках
-                </h3>
-                <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
-                  На рынках США, ОАЭ и Европы за внимание платёжеспособной аудитории конкурируют клиники, эксперты, wellness-бренды и крупные health-проекты. Без точного оффера, сегментации и сильных креативов стоимость обращения быстро растёт.
-                </p>
-              </div>
-
-              {/* Карточка 2 */}
-              <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">02 //</span>
-                <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
-                  Заявки есть, но покупать готовы не все
-                </h3>
-                <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
-                  Реклама может приводить обращения, которые не доходят до записи: люди спрашивают цену, пропадают после первого сообщения или выбирают более дешёвый вариант. Для high-ticket услуг важно привлекать не всех подряд, а аудиторию, которая понимает ценность и готова платить.
-                </p>
-              </div>
-
-              {/* Карточка 3 */}
-              <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">03 //</span>
-                <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
-                  Блокировки и ограничения рекламных кабинетов
-                </h3>
-                <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
-                  Health & Beauty — чувствительная ниша для модерации. Медицинские обещания, некорректные “до/после”, агрессивные формулировки и нарушение правил площадок могут привести к отклонениям, банам и остановке кампаний.
-                </p>
-              </div>
-
-              {/* Карточка 4 */}
-              <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">04 //</span>
-                <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
-                  Слабая воронка после клика
-                </h3>
-                <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
-                  Человек переходит по рекламе, но не находит достаточно доверия: сайт не раскрывает ценность услуги, соцсети выглядят слабо, не хватает доказательств, отзывов или понятного следующего шага. Интерес появляется, но до записи не доходит.
-                </p>
-              </div>
-
-              {/* Карточка 5 */}
-              <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">05 //</span>
-                <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
-                  Нет связи между рекламой, записями и оплатами
-                </h3>
-                <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
-                  В рекламном кабинете могут быть клики и заявки, но бизнес не видит, какие связки реально приводят записи, оплаты и возврат рекламных инвестиций. В итоге бюджет распределяется по ощущениям, а не по фактической эффективности.
-                </p>
-              </div>
-
-              {/* Карточка 6 */}
-              <div className="bg-[#f2f2f2]/40 p-8 lg:p-10 border border-[#01191d]/5 sharp-edge flex flex-col h-full hover:bg-white hover:shadow-[0_20px_60px_-15px_rgba(1,25,29,0.08)] transition-all duration-500 group relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-[#0b8c8e] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                <span className="block text-xl lg:text-2xl font-mono font-bold text-[#0b8c8e]/40 group-hover:text-[#0b8c8e] transition-colors mb-4">06 //</span>
-                <h3 className="text-xl font-extrabold text-[#01191d] leading-tight mb-4">
-                  Масштабирование превращается в слив бюджета
-                </h3>
-                <p className="text-[#01191d]/70 text-sm sm:text-base leading-relaxed font-medium">
-                  То, что работает на тестовом бюджете, не всегда выдерживает рост вложений. Аудитории выгорают, заявки дорожают, качество обращений падает, а подрядчик без опыта больших бюджетов и локальных рынков масштабирует не результат, а расходы.
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* БЛОК 3: Рекламная стратегия (Новый блок) */}
-        <section className="w-full bg-[#01191d] py-24 lg:py-32 px-6 lg:px-16 relative z-20 overflow-hidden">
-          
-          {/* Декоративное свечение */}
-          <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#0b8c8e]/10 rounded-full blur-[120px] pointer-events-none"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#0b8c8e]/5 rounded-full blur-[100px] pointer-events-none"></div>
-
-          <div className="max-w-[90rem] mx-auto relative z-10">
-            
-            <div className="max-w-4xl mb-16 lg:mb-20">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="w-8 h-[1px] bg-[#0b8c8e]"></span>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#0b8c8e]">Подход к работе</span>
-              </div>
-              <h2 className="text-[2rem] sm:text-4xl lg:text-[3rem] font-extrabold leading-[1.1] tracking-tight text-white mb-6 [text-wrap:balance]">
-                Рекламная стратегия AnnyWay для Health & Beauty: от доверия к бренду до записи и оплаты
-              </h2>
-              <p className="text-white/70 text-base sm:text-lg leading-relaxed font-medium max-w-3xl">
-                Мы не запускаем рекламу как отдельный канал. Перед стартом смотрим на весь путь клиента: что он видит в объявлении, куда попадает после клика, насколько убедительно упакована услуга, как быстро обрабатывается обращение и какие связки действительно приводят к записям и оплатам.
-              </p>
-            </div>
-
-            {/* Сетка стратегии */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 lg:gap-y-16">
+            {/* БЛОК 3: Рекламная стратегия (Новый блок) */}
+            <section className="w-full bg-[#01191d] py-24 lg:py-32 px-6 lg:px-16 relative z-20 overflow-hidden">
               
-              <div className="flex flex-col border-t border-white/10 pt-6 group">
-                <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
-                  <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">01 //</span>
-                  Начинаем с экономики и точки роста
-                </h3>
-                <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
-                  Перед запуском разбираем продукт, средний чек, рынок, конкурентов, допустимую стоимость привлечения и слабые места в рекламной воронке. На основе этого подбираем связку каналов под задачу проекта: протестировать оффер, привлечь заинтересованную аудиторию, усилить доверие и привести клиента к записи.
-                </p>
-              </div>
+              {/* Декоративное свечение */}
+              <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#0b8c8e]/10 rounded-full blur-[120px] pointer-events-none"></div>
+              <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#0b8c8e]/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-              <div className="flex flex-col border-t border-white/10 pt-6 group">
-                <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
-                  <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">02 //</span>
-                  Собираем оффер под платёжеспособную аудиторию
-                </h3>
-                <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
-                  В Health & Beauty клиент покупает не процедуру, а доверие, результат, безопасность и экспертность. Поэтому мы упаковываем услугу так, чтобы реклама объясняла ценность, а не конкурировала только ценой.
-                </p>
-              </div>
-
-              <div className="flex flex-col border-t border-white/10 pt-6 group">
-                <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
-                  <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">03 //</span>
-                  Связка смыслов и дизайна
-                </h3>
-                <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
-                  Рекламные макеты и тексты готовит команда, которая работает не только с визуалом, но и с оффером, позиционированием и смыслами. Это особенно важно на конкурентных рынках, где креатив должен объяснять ценность услуги и вызывать доверие у платёжеспособной аудитории.
-                </p>
-              </div>
-
-              <div className="flex flex-col border-t border-white/10 pt-6 group">
-                <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
-                  <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">04 //</span>
-                  Учитываем комплаенс Health & Beauty
-                </h3>
-                <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
-                  Работаем с чувствительными темами аккуратно: медицинские обещания, “до/после”, формулировки, ограничения площадок и правила модерации. Это снижает риск отклонений, блокировок кабинетов и репутационных ошибок.
-                </p>
-              </div>
-
-              <div className="flex flex-col border-t border-white/10 pt-6 group">
-                <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
-                  <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">05 //</span>
-                  Оптимизируем по качеству обращений, а не только по CPL
-                </h3>
-                <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
-                  Регулярно сверяем рекламные данные с реальностью: какие заявки доходят до записи, какие диалоги слабые, какие связки дают оплату, а какие только создают видимость результата.
-                </p>
-              </div>
-
-              <div className="flex flex-col border-t border-white/10 pt-6 group">
-                <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
-                  <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">06 //</span>
-                  Адаптируем рекламу под локальные рынки
-                </h3>
-                <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
-                  Для США, ОАЭ и Европы учитываем язык, культурный контекст, уровень доверия, ожидания клиента и аргументы, которые работают на конкретном рынке. Поэтому реклама звучит не как перевод, а как понятное предложение для местной аудитории.
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-      </div>
-
-      {/* Модальное окно с формой (В стиле бренда) */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#01191d]/80 backdrop-blur-sm animate-fade-in-up">
-          <div className="bg-white w-full max-w-lg p-8 sm:p-12 relative sharp-edge shadow-2xl">
-            
-            <button 
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-6 right-6 text-[#01191d]/40 hover:text-[#0b8c8e] transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            {isSubmitted ? (
-              <div className="text-center py-10">
-                <div className="w-16 h-16 bg-[#0b8c8e]/10 text-[#0b8c8e] mx-auto mb-6 flex items-center justify-center sharp-edge">
-                  <Check className="w-8 h-8" />
+              <div className="max-w-[90rem] mx-auto relative z-10">
+                
+                <div className="max-w-4xl mb-16 lg:mb-20">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="w-8 h-[1px] bg-[#0b8c8e]"></span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#0b8c8e]">Подход к работе</span>
+                  </div>
+                  <h2 className="text-[2rem] sm:text-4xl lg:text-[3rem] font-extrabold leading-[1.1] tracking-tight text-white mb-6 [text-wrap:balance]">
+                    Рекламная стратегия AnnyWay для Health & Beauty: от доверия к бренду до записи и оплаты
+                  </h2>
+                  <p className="text-white/70 text-base sm:text-lg leading-relaxed font-medium max-w-3xl">
+                    Мы не запускаем рекламу как отдельный канал. Перед стартом смотрим на весь путь клиента: что он видит в объявлении, куда попадает после клика, насколько убедительно упакована услуга, как быстро обрабатывается обращение и какие связки действительно приводят к записям и оплатам.
+                  </p>
                 </div>
-                <h3 className="text-2xl font-extrabold text-[#01191d] mb-4">Заявка успешно отправлена</h3>
-                <p className="text-[#01191d]/70 text-sm leading-relaxed mb-6">
-                  Мы свяжемся с вами в ближайшее время.<br/>Обещанный гайд уже летит на ваши контакты.
-                </p>
+
+                {/* Сетка стратегии */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 lg:gap-y-16">
+                  
+                  <div className="flex flex-col border-t border-white/10 pt-6 group">
+                    <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
+                      <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">01 //</span>
+                      Начинаем с экономики и точки роста
+                    </h3>
+                    <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
+                      Перед запуском разбираем продукт, средний чек, рынок, конкурентов, допустимую стоимость привлечения и слабые места в рекламной воронке. На основе этого подбираем связку каналов под задачу проекта: протестировать оффер, привлечь заинтересованную аудиторию, усилить доверие и привести клиента к записи.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col border-t border-white/10 pt-6 group">
+                    <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
+                      <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">02 //</span>
+                      Собираем оффер под платёжеспособную аудиторию
+                    </h3>
+                    <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
+                      В Health & Beauty клиент покупает не процедуру, а доверие, результат, безопасность и экспертность. Поэтому мы упаковываем услугу так, чтобы реклама объясняла ценность, а не конкурировала только ценой.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col border-t border-white/10 pt-6 group">
+                    <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
+                      <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">03 //</span>
+                      Связка смыслов и дизайна
+                    </h3>
+                    <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
+                      Рекламные макеты и тексты готовит команда, которая работает не только с визуалом, но и с оффером, позиционированием и смыслами. Это особенно важно на конкурентных рынках, где креатив должен объяснять ценность услуги и вызывать доверие у платёжеспособной аудитории.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col border-t border-white/10 pt-6 group">
+                    <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
+                      <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">04 //</span>
+                      Учитываем комплаенс Health & Beauty
+                    </h3>
+                    <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
+                      Работаем с чувствительными темами аккуратно: медицинские обещания, “до/после”, формулировки, ограничения площадок и правила модерации. Это снижает риск отклонений, блокировок кабинетов и репутационных ошибок.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col border-t border-white/10 pt-6 group">
+                    <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
+                      <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">05 //</span>
+                      Оптимизируем по качеству обращений, а не только по CPL
+                    </h3>
+                    <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
+                      Регулярно сверяем рекламные данные с реальностью: какие заявки доходят до записи, какие диалоги слабые, какие связки дают оплату, а какие только создают видимость результата.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col border-t border-white/10 pt-6 group">
+                    <h3 className="text-xl font-extrabold text-white mb-4 group-hover:text-[#0b8c8e] transition-colors duration-300 flex items-start">
+                      <span className="text-[#0b8c8e] font-mono font-bold mr-3 mt-1 text-sm shrink-0">06 //</span>
+                      Адаптируем рекламу под локальные рынки
+                    </h3>
+                    <p className="text-white/70 text-sm sm:text-base leading-relaxed font-medium pl-10">
+                      Для США, ОАЭ и Европы учитываем язык, культурный контекст, уровень доверия, ожидания клиента и аргументы, которые работают на конкретном рынке. Поэтому реклама звучит не как перевод, а как понятное предложение для местной аудитории.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+          {/* Модальное окно с формой (В стиле бренда) */}
+          {isModalOpen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#01191d]/80 backdrop-blur-sm animate-fade-in-up">
+              <div className="bg-white w-full max-w-lg p-8 sm:p-12 relative sharp-edge shadow-2xl">
+                
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="px-8 py-4 bg-[#01191d] text-white sharp-edge text-[10px] uppercase tracking-[0.2em] font-extrabold hover:bg-[#0b8c8e] transition-colors duration-300"
+                  className="absolute top-6 right-6 text-[#01191d]/40 hover:text-[#0b8c8e] transition-colors"
                 >
-                  Закрыть окно
+                  <i data-lucide="x" className="w-6 h-6"></i>
                 </button>
-              </div>
-            ) : (
-              <>
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="w-8 h-[1px] bg-[#0b8c8e]"></span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#0b8c8e]">Консультация</span>
-                </div>
-                
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#01191d] mb-4">
-                  Обсудить ваш проект
-                </h3>
-                
-                <p className="text-[#01191d]/60 text-sm font-medium mb-8">
-                  Оставьте заявку и получите стратегию, а также гайд по частым ошибкам в маркетинге клиник и beauty-брендов.
-                </p>
 
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                  <input 
-                    type="text" 
-                    required
-                    placeholder="Ваше имя" 
-                    className="w-full bg-[#f2f2f2] border border-[#01191d]/10 text-[#01191d] placeholder-[#01191d]/40 px-5 py-4 focus:border-[#0b8c8e] focus:bg-white transition-colors sharp-edge text-sm font-medium"
-                  />
-                  <input 
-                    type="text" 
-                    required
-                    placeholder="Телефон или Мессенджер" 
-                    className="w-full bg-[#f2f2f2] border border-[#01191d]/10 text-[#01191d] placeholder-[#01191d]/40 px-5 py-4 focus:border-[#0b8c8e] focus:bg-white transition-colors sharp-edge text-sm font-medium"
-                  />
-                  <input 
-                    type="text" 
-                    placeholder="Ссылка на проект (необязательно)" 
-                    className="w-full bg-[#f2f2f2] border border-[#01191d]/10 text-[#01191d] placeholder-[#01191d]/40 px-5 py-4 focus:border-[#0b8c8e] focus:bg-white transition-colors sharp-edge text-sm font-medium mb-2"
-                  />
-                  
-                  <button 
-                    type="submit" 
-                    className="w-full bg-[#0b8c8e] text-white sharp-edge text-[11px] uppercase tracking-[0.2em] font-extrabold hover:bg-[#01191d] transition-colors duration-500 flex items-center justify-center gap-3 py-5 mt-2 group"
-                  >
-                    Отправить заявку
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                  
-                  <p className="text-[#01191d]/40 text-[10px] text-center mt-3 font-medium">
-                    Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.
-                  </p>
-                </form>
-              </>
-            )}
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
+                {isSubmitted ? (
+                  <div className="text-center py-10">
+                    <div className="w-16 h-16 bg-[#0b8c8e]/10 text-[#0b8c8e] mx-auto mb-6 flex items-center justify-center sharp-edge">
+                      <i data-lucide="check" className="w-8 h-8"></i>
+                    </div>
+                    <h3 className="text-2xl font-extrabold text-[#01191d] mb-4">Заявка успешно отправлена</h3>
+                    <p className="text-[#01191d]/70 text-sm leading-relaxed mb-6">
+                      Мы свяжемся с вами в ближайшее время.<br/>Обещанный гайд уже летит на ваши контакты.
+                    </p>
+                    <button 
+                      onClick={() => setIsModalOpen(false)}
+                      className="px-8 py-4 bg-[#01191d] text-white sharp-edge text-[10px] uppercase tracking-[0.2em] font-extrabold hover:bg-[#0b8c8e] transition-colors duration-300"
+                    >
+                      Закрыть окно
+                    </button>
+                  </div>
+                ) : (
+                  <React.Fragment>
+                    <div className="flex items-center gap-3 mb-6">
+                      <span className="w-8 h-[1px] bg-[#0b8c8e]"></span>
+                      <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#0b8c8e]">Консультация</span>
+                    </div>
+                    
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-[#01191d] mb-4">
+                      Обсудить ваш проект
+                    </h3>
+                    
+                    <p className="text-[#01191d]/60 text-sm font-medium mb-8">
+                      Оставьте заявку и получите стратегию, а также гайд по частым ошибкам в маркетинге клиник и beauty-брендов.
+                    </p>
+
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                      <input 
+                        type="text" 
+                        required
+                        placeholder="Ваше имя" 
+                        className="w-full bg-[#f2f2f2] border border-[#01191d]/10 text-[#01191d] placeholder-[#01191d]/40 px-5 py-4 focus:border-[#0b8c8e] focus:bg-white transition-colors sharp-edge text-sm font-medium"
+                      />
+                      <input 
+                        type="text" 
+                        required
+                        placeholder="Телефон или Мессенджер" 
+                        className="w-full bg-[#f2f2f2] border border-[#01191d]/10 text-[#01191d] placeholder-[#01191d]/40 px-5 py-4 focus:border-[#0b8c8e] focus:bg-white transition-colors sharp-edge text-sm font-medium"
+                      />
+                      <input 
+                        type="text" 
+                        placeholder="Ссылка на проект (необязательно)" 
+                        className="w-full bg-[#f2f2f2] border border-[#01191d]/10 text-[#01191d] placeholder-[#01191d]/40 px-5 py-4 focus:border-[#0b8c8e] focus:bg-white transition-colors sharp-edge text-sm font-medium mb-2"
+                      />
+                      
+                      <button 
+                        type="submit" 
+                        className="w-full bg-[#0b8c8e] text-white sharp-edge text-[11px] uppercase tracking-[0.2em] font-extrabold hover:bg-[#01191d] transition-colors duration-500 flex items-center justify-center gap-3 py-5 mt-2 group"
+                      >
+                        Отправить заявку
+                        <i data-lucide="arrow-right" className="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                      </button>
+                      
+                      <p className="text-[#01191d]/40 text-[10px] text-center mt-3 font-medium">
+                        Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.
+                      </p>
+                    </form>
+                  </React.Fragment>
+                )}
+              </div>
+            </div>
+          )}
+        </React.Fragment>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
